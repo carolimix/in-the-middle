@@ -25,29 +25,9 @@ body {
   width: 90%;
 }
 
-#pointA,
-#pointB {
-  margin-right: 10px;
-}
-
 label {
   font-weight: bold;
   margin-bottom: 5px;
-}
-
-#pointA input,
-#pointB input,
-#categories,
-button {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 5px;
-  width: 150px;
-}
-
-#categories {
-  flex-shrink: 0;
 }
 
 button {
@@ -71,45 +51,6 @@ body {
   height: 100%;
 }
 
-#search {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px;
-  background-color: transparent;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  max-width: 400px;
-  width: 90%;
-}
-
-#pointA,
-#pointB {
-  margin-right: 10px;
-}
-
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-#pointA input,
-#pointB input,
-#categories,
-button {
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-right: 5px;
-  width: 150px;
-}
-
-#categories {
-  flex-shrink: 0;
-}
-
 button {
   background-color: #4caf50;
   color: white;
@@ -122,20 +63,4 @@ button:hover {
 
 html {
   scroll-behavior: smooth;
-}
-
-@media screen and (max-width: 600px) {
-  #search {
-    width: 90%;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  #pointA input,
-  #pointB input,
-  #categories,
-  button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
 }

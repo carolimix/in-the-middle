@@ -1,20 +1,18 @@
-
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Map from './components/Map';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import Mapbox from "./components/Mapbox";
+import Map from "./Map";
 
 function App() {
   return (
     <>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/map" element={<Map />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Map />} />
+          {/* <Route path="/map" element={<Map />} /> */}
+        </Routes>
+      </Router>
     </>
   );
 }
 
 export default App;
-
