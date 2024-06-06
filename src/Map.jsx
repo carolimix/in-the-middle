@@ -25,7 +25,7 @@ function Map() {
       center: [lng, lat],
       zoom: 12,
     });
-  }, []);
+  });
 
   function addMarkersOnMap(e) {
     const currentAddress = new mapboxgl.LngLat(e[0], e[1]);
