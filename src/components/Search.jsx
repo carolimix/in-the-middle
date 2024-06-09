@@ -11,7 +11,7 @@ export default function Search({ addMarkersOnMap }) {
     setValue(e.features[0].properties.full_address);
     addMarkersOnMap(e.features[0].geometry.coordinates);
   }
-  console.log("value", value);
+
   return (
     <form>
       <SearchBox
