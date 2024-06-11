@@ -25,4 +25,4 @@ dist-ssr
 
 .env
 
-mapBoxConstants.js
+src/mapBoxConstants.js
