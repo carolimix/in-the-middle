@@ -2,14 +2,13 @@ import { useState, useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { ACCESS_TOKEN } from "../mapBoxConstants.js";
+import Search from "./Search.jsx";
 //import emailjs from "@emailjs/browser";
 
 const AddForm = () => {
   const [formData, setFormData] = useState({
     name: "",
-    address: "",
-    PLZ: "",
-    city: "",
+    coordinates: "",
     hasToilette: "",
     hasTable: "",
     sellsFood: "",
@@ -17,7 +16,7 @@ const AddForm = () => {
     hasCardPayment: "",
     sterniPrice: "",
   });
-
+  /* 
   const tokenMapBox = ACCESS_TOKEN;
   mapboxgl.accessToken = tokenMapBox;
 
@@ -47,8 +46,8 @@ const AddForm = () => {
       }));
     });
 
-    return () => geocoder.remove();
-  }, [tokenMapBox]);
+    return () => geocoder.clear();
+  }, [tokenMapBox]); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,6 +70,14 @@ const AddForm = () => {
       console.log(error.text);
     });
 };  */
+
+  const handleSearch = (coordinates,value) => {
+    console.log(coordinates, value);
+     setFormData((prevState) => ({
+    ...prevState,
+     coordinates,
+  })); 
+  };
 
   const handleOnChange = (e) => {
     setFormData((prevState) => ({
@@ -111,38 +118,12 @@ const AddForm = () => {
             onChange={handleOnChange}
           />
         </div>
+        
         <div>
           <label htmlFor='address'>Address:</label>
-          <div ref={geocoderContainerRef} style={{ marginBottom: "10px" }} />
-          <input
-            type='text'
-            id='address'
-            name='address'
-            value={formData.address}
-            onChange={handleOnChange}
-            readOnly
-          />
-        </div>
-        <div>
-          <label htmlFor='PLZ'>PLZ:</label>
-          <input
-            type='text'
-            id='PLZ'
-            name='PLZ'
-            value={formData.PLZ}
-            onChange={handleOnChange}
-          />
-        </div>
-        <div>
-          <label htmlFor='city'>City:</label>
-          <input
-            type='text'
-            id='city'
-            name='city'
-            value={formData.city}
-            onChange={handleOnChange}
-          />
-        </div>
+          <Search addMarkersOnMap={handleSearch} />
+          <div style={{ marginBottom: "10px" }} />
+          </div>
         <div>
           <h3>Extra info</h3>
           <legend>Does it have a toilette?</legend>
@@ -254,7 +235,7 @@ const AddForm = () => {
             />{" "}
             No
           </label>
-
+<div>
           <label htmlFor='sterniPrice'>Sterni Price:</label>
           <select
             name='sterniPrice'
@@ -265,6 +246,7 @@ const AddForm = () => {
             <option value=''>Select price</option>
             {generatePriceOptions()}
           </select>
+          </div>
         </div>
         <button type='submit' disabled={!isFormValid}>
           Submit

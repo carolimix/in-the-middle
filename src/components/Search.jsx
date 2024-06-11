@@ -8,8 +8,8 @@ export default function Search({ addMarkersOnMap }) {
   const [value, setValue] = useState("");
   function handleSearch(e) {
     //get the coordanates of the adreess typed
-    setValue(e.features[0].properties.full_address);
-    addMarkersOnMap(e.features[0].geometry.coordinates);
+    setValue((prevState) => e.features[0].properties.full_address);
+    addMarkersOnMap(e.features[0].geometry.coordinates,value);
   }
 
   return (
