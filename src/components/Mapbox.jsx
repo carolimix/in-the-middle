@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { ACCESS_TOKEN } from "../mapBoxConstants.js";
 import Search from "./Search.jsx";
 import createMarker from "../utils/createMarker.js";
+import { useNavigate } from "react-router-dom";
 
 const tokenMapBox = ACCESS_TOKEN;
 mapboxgl.accessToken = tokenMapBox;
@@ -66,10 +67,18 @@ function Mapbox() {
     setMarkers(markers);
   }
 
+  const navigate = useNavigate();
+
+  const handleAddSpatiClick = () => {
+    navigate("/add");
+  };
+
   return (
     <div style={{ margin: "50px 50px 0 50px" }}>
       <Search addMarkersOnMap={addMarkersOnMap} />
-      <div ref={mapContainer} className="map-container" />
+      <div ref={mapContainer} className='map-container' />
+      <h1>Cant find your favorite one? Add it here:</h1>
+      <button onClick={handleAddSpatiClick}>Add New Späti</button>
     </div>
   );
 }
