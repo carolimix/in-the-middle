@@ -16,39 +16,7 @@ const AddForm = () => {
     hasCardPayment: "",
     sterniPrice: "",
   });
-  /* 
-  const tokenMapBox = ACCESS_TOKEN;
-  mapboxgl.accessToken = tokenMapBox;
-
-  const geocoderContainerRef = useRef(null);
-
-  useEffect(() => {
-    const geocoder = new MapboxGeocoder({
-      accessToken: tokenMapBox,
-      types: "address",
-      placeholder: "Enter an address",
-      //proximity: {longitude: 13.4050, latitude: 52.200} optional: configures an initial location
-    });
-    geocoder.addTo(geocoderContainerRef.current);
-
-    geocoder.on("result", (e) => {
-      const place = e.result;
-      const context = place.context || [];
-
-      const plz = context.find((c) => c.id.startsWith("postcode"))?.text || "";
-      const city = context.find((c) => c.id.startsWith("place"))?.text || "";
-
-      setFormData((prevState) => ({
-        ...prevState,
-        address: place.place_name,
-        PLZ: plz,
-        city: city,
-      }));
-    });
-
-    return () => geocoder.clear();
-  }, [tokenMapBox]); */
-
+  
   const handleSubmit = (e) => {
     e.preventDefault();
 
