@@ -1,7 +1,6 @@
 import { SearchBox } from "@mapbox/search-js-react";
 import { useState } from "react";
-const tokenMapBoxx =
-  "pk.eyJ1IjoicHJpc2NpbGFmbG9yZXMiLCJhIjoiY2x3eHRzNGtwMWI0MjJ6cjFkYWpoMGlmOSJ9.jzw0SE_Rivow1QJfHCzu3g";
+const tokenMapBox = import.meta.env.VITE_ACCESS_TOKEN
 
 // eslint-disable-next-line react/prop-types
 export default function Search({ addMarkersOnMap }) {
@@ -17,7 +16,7 @@ export default function Search({ addMarkersOnMap }) {
       <SearchBox
         value={value}
         onRetrieve={handleSearch}
-        accessToken={tokenMapBoxx}
+        accessToken={tokenMapBox}
       />
     </form>
   );

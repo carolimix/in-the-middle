@@ -1,12 +1,11 @@
 import mapboxgl from "mapbox-gl";
 import { geojson } from "../../data.js"; // mocked data
 import { useRef, useEffect, useState } from "react";
-import { ACCESS_TOKEN } from "../mapBoxConstants.js";
 import Search from "./Search.jsx";
 import createMarker from "../utils/createMarker.js";
 import { useNavigate } from "react-router-dom";
 
-const tokenMapBox = ACCESS_TOKEN;
+const tokenMapBox = import.meta.env.VITE_ACCESS_TOKEN;
 mapboxgl.accessToken = tokenMapBox;
 
 function Mapbox() {
