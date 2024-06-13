@@ -1,6 +1,7 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Search from "./Search.jsx";
-//import emailjs from "@emailjs/browser";
+import { useNavigate} from 'react-router-dom';
+import emailjs from "@emailjs/browser";
 
 const AddForm = () => {
   const [formData, setFormData] = useState({
@@ -26,15 +27,26 @@ const AddForm = () => {
       ...formData,
     };
     console.log(data);
+
   };
-  /* 
-    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', data, 'YOUR_USER_ID')
+
+  const navigate = useNavigate();
+
+  const handleNewSpati = () => {
+    navigate('/newspati')
+  }
+ 
+  const handleEmail = () => {
+    emailjs.send('service_axupipm', 'template_l6cv1oe', data, 'YOUR_USER_ID')
     .then((result) => {
       console.log(result.text);
     }, (error) => {
       console.log(error.text);
     });
-};  */
+
+  }
+
+}; 
 
   const handleSearch = (coordinates,value) => {
     console.log(coordinates, value);
@@ -213,9 +225,10 @@ const AddForm = () => {
           </select>
           </div>
         </div>
-        <button type='submit' disabled={!isFormValid}>
+        <button onClick={handleNewSpati} type='submit' disabled={!isFormValid}>
           Submit
         </button>{" "}
+        <button onClick={handleEmail}>email</button>
       </form>
     </div>
   );
