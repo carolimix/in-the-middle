@@ -17,6 +17,22 @@ function Mapbox() {
   // const [filteredSpatis, setFilteredSpatis] = useState();
   const [markers, setMarkers] = useState([]);
 
+  console.log("SPATIS: "+spatis)
+  const handleCheckBox = (benches, toilet, card) => {
+
+
+    const filteredSpatis = spatis.filter((spati) => {
+      return spati.properties.bench == benches;
+  })
+
+  console.log("SPATI FITRADO")
+console.log(filteredSpatis);  
+  }
+
+
+
+  
+
   useEffect(() => {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
@@ -25,9 +41,11 @@ function Mapbox() {
       center: [lng, lat],
       zoom: 12,
     });
+    
     const markers = spatis.map((n) => createMarker(n));
     setMarkers(markers);
   }, [lat, lng]);
+
 
   useEffect(() => {
     if (!map.current) return;
@@ -60,6 +78,7 @@ function Mapbox() {
           n.geometry.coordinates[0],
           n.geometry.coordinates[1]
         );
+        
         return currentAddress.distanceTo(newMarker) < 3000;
       })
       .map((n) => createMarker(n));
@@ -74,7 +93,7 @@ function Mapbox() {
 
   return (
     <div style={{ margin: "50px 50px 0 50px" }}>
-      <Search addMarkersOnMap={addMarkersOnMap} />
+      <Search addMarkersOnMap={addMarkersOnMap} handleCheckBox={handleCheckBox}/>
       <div ref={mapContainer} className='map-container' />
       <h1>Cant find your favorite one? Add it here:</h1>
       <button onClick={handleAddSpatiClick}>Add New Späti</button>

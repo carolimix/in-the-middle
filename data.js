@@ -11,7 +11,7 @@ export const geojson = {
         title: 'Späti',
         description: 'Späti',
         toilette: 'No Toillete',
-        bench: 'Bench - 10m',
+        bench: true,
       }
     },
     {
@@ -24,7 +24,7 @@ export const geojson = {
         title: 'Späti',
         description: 'Späti International',
         toilette: 'No Toillete',
-        bench: 'Bench - 10m',
+        bench: true,
       }
     },
     {
@@ -37,7 +37,7 @@ export const geojson = {
         title: 'Späti',
         description: 'Späti 24H',
         toilette: 'Toillete',
-        bench: 'Bench - 50m',
+        bench: false,
       }
     },
     {
@@ -50,7 +50,7 @@ export const geojson = {
         title: 'Späti',
         description: 'Späti - Meet me half way',
         toilette: 'No Toillete',
-        bench: 'Bench - 20m',
+        bench: false,
       }
     },
     {
@@ -63,7 +63,7 @@ export const geojson = {
         title: 'Späti',
         description: 'Attis Späti',
         toilette: 'No Toillete',
-        bench: 'Bench - 30m',
+        bench: true,
       }
     },
     {
@@ -76,7 +76,7 @@ export const geojson = {
         title: 'Späti - Neukölln',
         description: 'Späti - Späti - Neukölln, Bülowstraße 24, 10783 Berlin',
         toilette: 'Toillete',
-        bench: 'Bench - 60m',
+        bench: false,
       }
     }
     
