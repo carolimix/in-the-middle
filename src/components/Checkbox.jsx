@@ -26,7 +26,6 @@ export default function Checkbox({ handleCheckBox }) {
 
   useEffect(()=> {
     handleCheckBox(checkedBenches, checkedToilet, checkedCard)
-    console.log("Benches: " + checkedBenches + " / Toilet: " + checkedToilet + " / Card: "+ checkedCard)
     
   }, [checkedBenches, checkedToilet, checkedCard])
 

@@ -16,22 +16,59 @@ function Mapbox() {
   const [spatis, setSpatis] = useState(geojson.features);
   // const [filteredSpatis, setFilteredSpatis] = useState();
   const [markers, setMarkers] = useState([]);
+  const [benches, setBenches] = useState();
+  const [toilet, setToilet] = useState();
+  const [card, setCard] = useState();
 
-  console.log("SPATIS: "+spatis)
+ 
   const handleCheckBox = (benches, toilet, card) => {
+    setBenches(benches)
+    setToilet(toilet)
+    setCard(card)
 
+    console.log("Benches: " + benches + " Toilet: " + toilet + " Card: " + card)
+    if (benches == true || toilet == true || card == true) {
+    console.log("entrou no primeiro if")
+    
+   
+     const filteredSpatis = spatis.filter((spati) => {
+      console.log(spati.properties.toilette)
+    return (benches ? spati.properties.bench == benches : null) || (toilet ? spati.properties.toilette == toilet : null) || (card ? spati.properties.card == card : null);
+  });
 
-    const filteredSpatis = spatis.filter((spati) => {
-      return spati.properties.bench == benches;
-  })
-
-  console.log("SPATI FITRADO")
-console.log(filteredSpatis);  
-  }
-
-
-
+    setSpatis(filteredSpatis);
+    const markerss = spatis.map((n) => createMarker(n));
+    setMarkers(markerss);
   
+  }
+    if (benches == false && toilet == false && card == false) {
+      console.log("ENTROU")
+      setSpatis(geojson.features)
+      const markerss = spatis.map((n) => createMarker(n));
+      setMarkers(markerss);
+      
+  }
+  
+}
+
+useEffect(()=> {
+  markers.forEach((m) => {
+    m.addTo(map.current);
+  });
+
+  return () => {
+    markers.forEach((m) => {
+      m.remove();
+    });
+  };
+
+}, [markers])
+
+useEffect(()=> {
+
+  handleCheckBox(benches, toilet, card)
+
+}, [benches, toilet, card])
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -44,7 +81,7 @@ console.log(filteredSpatis);
     
     const markers = spatis.map((n) => createMarker(n));
     setMarkers(markers);
-  }, [lat, lng]);
+  }, [lat, lng, spatis, markers]);
 
 
   useEffect(() => {
@@ -55,19 +92,12 @@ console.log(filteredSpatis);
     });
   }, [lng, lat]);
 
-  useEffect(() => {
-    markers.forEach((m) => {
-      m.addTo(map.current);
-    });
+ 
 
-    return () => {
-      markers.forEach((m) => {
-        m.remove();
-      });
-    };
-  }, [markers]);
 
   function addMarkersOnMap(e) {
+
+    
     const currentAddress = new mapboxgl.LngLat(e[0], e[1]);
     setLat(e[1]);
     setLng(e[0]);
