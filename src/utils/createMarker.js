@@ -6,9 +6,11 @@ export default function createMarker(n) {
   <b style="color: black">
     ${n.properties.description}
     </br>
-    ${n.properties.toilette}
+   <p> Toilet: ${n.properties.toilette} </p>
     </br>
-    ${n.properties.bench}
+   <p> Benches: ${n.properties.bench} </p>
+    </br>
+   <p> Card: ${n.properties.card} </p>
   </b>
 </br>`
   );
