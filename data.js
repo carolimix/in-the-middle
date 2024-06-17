@@ -1,920 +1,1724 @@
 export const geojson = {
-  type: 'FeatureCollection',
+  type: "FeatureCollection",
   features: [
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.431684, 52.491205]
+        type: "Point",
+        coordinates: [13.449289925058265, 52.4866985991056], // Example coordinates within Berlin
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti',
+        title: "Troja Spätkauf",
+        description: "Späti",
         toilette: true,
         bench: true,
-        card: true
-      }
+        card: true,
+        address: "Harzer Str. 85, 12059 Berlin",
+        opening_hours: {
+          monday: ["10:00 - 20:00"],
+          tuesday: ["10:00 - 20:00"],
+          wednesday: ["10:00 - 20:00"],
+          thursday: ["10:00 - 20:00"],
+          friday: ["10:00 - 20:00"],
+          saturday: ["10:00 - 20:00"],
+          sunday: ["10:00 - 20:00"],
+        },
+        sternburg_price: "€2.80",
+      },
     },
+    // Add more entries here with coordinates within Berlin
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.417097, 52.499573]
+        type: "Point",
+        coordinates: [13.442852623704676, 52.48084439311151], // Berlin coordinates
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti International',
-        toilette: false,
-        bench: true,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.41720, 52.479573]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti 24H',
-        toilette: false,
-        bench: false,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.407097, 52.49293]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti - Meet me half way',
-        toilette: false,
-        bench: false,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.360774, 52.498318]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Attis Späti',
-        toilette: false,
-        bench: true,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.445628, 52.477389]
-      },
-      properties: {
-        title: 'Späti - Neukölln',
-        description: 'Späti - Späti - Neukölln, Bülowstraße 24, 10783 Berlin',
+        title: "Späti 24/7 Takis Shop",
+        description: "Kreuzberg Späti",
         toilette: true,
         bench: false,
-        card: true
-      }
+        card: true,
+        address: "Oranienstraße 45",
+        opening_hours: {
+          monday: ["08:00 - 22:00"],
+          tuesday: ["08:00 - 22:00"],
+          wednesday: ["08:00 - 22:00"],
+          thursday: ["08:00 - 22:00"],
+          friday: ["08:00 - 22:00"],
+          saturday: ["09:00 - 20:00"],
+          sunday: ["10:00 - 18:00"],
+        },
+        sternburg_price: "€2.90",
+      },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.384803, 52.507608]
+        type: "Point",
+        coordinates: [13.434698708656791, 52.487848440881045], // Berlin coordinates
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti at Alexanderplatz',
-        toilette: false,
-        bench: true,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.453208, 52.501583]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Warschauer Straße',
-        toilette: true,
-        bench: false,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.438172, 52.513191]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Prenzlauer Berg',
-        toilette: true,
-        bench: true,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.388163, 52.482931]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Kreuzberg',
+        title: "Späti international",
+        description: "Kreuzberg Corner Store",
         toilette: false,
         bench: false,
-        card: true
-      }
+        card: true,
+        address: "Oranienstraße 15",
+        opening_hours: {
+          monday: ["08:00 - 20:00"],
+          tuesday: ["08:00 - 20:00"],
+          wednesday: ["08:00 - 20:00"],
+          thursday: ["08:00 - 20:00"],
+          friday: ["08:00 - 20:00"],
+          saturday: ["09:00 - 18:00"],
+          sunday: ["Closed"],
+        },
+        sternburg_price: "€3.20",
+      },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.342999, 52.515807]
+        type: "Point",
+        coordinates: [13.417, 52.508], // Berlin coordinates
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti at Charlottenburg',
+        title: "Späti ReDI",
+        description: "Friedrichshain Späti",
         toilette: true,
         bench: false,
-        card: true
-      }
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.479615, 52.497489]
+        type: "Point",
+        coordinates: [13.431684, 52.491205],
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti at Friedrichshain',
-        toilette: false,
-        bench: true,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.389954, 52.517037]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Hackescher Markt',
-        toilette: false,
-        bench: true,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.379419, 52.531677]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Wedding',
-        toilette: true,
-        bench: false,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.398602, 52.525478]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Gesundbrunnen',
+        title: "Späti Berlin",
+        description: "Späti",
         toilette: true,
         bench: true,
-        card: true
-      }
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€1.00",
+      },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.413573, 52.526414]
+        type: "Point",
+        coordinates: [13.417097, 52.499573],
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti at Humboldthain',
-        toilette: false,
-        bench: false,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.434275, 52.500391]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Landsberger Allee',
-        toilette: true,
-        bench: true,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.380672, 52.515074]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Ernst-Reuter-Platz',
-        toilette: false,
-        bench: false,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.396407, 52.488134]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Mehringdamm',
-        toilette: true,
-        bench: true,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.449619, 52.519997]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Frankfurter Allee',
-        toilette: false,
-        bench: false,
-        card: false
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.428517, 52.482726]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Tempelhofer Feld',
-        toilette: true,
-        bench: false,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.365596, 52.503007]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Tiergarten',
+        title: "Späti International Club",
+        description: "Späti International",
         toilette: false,
         bench: true,
-        card: false
-      }
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.324204, 52.496507]
+        type: "Point",
+        coordinates: [13.4172, 52.479573],
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti at Westend',
-        toilette: true,
-        bench: true,
-        card: true
-      }
-    },
-    {
-      type: 'Feature',
-      geometry: {
-        type: 'Point',
-        coordinates: [13.389528, 52.457656]
-      },
-      properties: {
-        title: 'Späti',
-        description: 'Späti at Baumschulenweg',
+        title: "Späti Pretty",
+        description: "Späti 24H",
         toilette: false,
         bench: false,
-        card: true
-      }
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
     },
     {
-      type: 'Feature',
+      type: "Feature",
       geometry: {
-        type: 'Point',
-        coordinates: [13.483834, 52.474607]
+        type: "Point",
+        coordinates: [13.407097, 52.49293],
       },
       properties: {
-        title: 'Späti',
-        description: 'Späti at Karlshorst',
+        title: "Späti Meet me half way",
+        description: "Spätikauf",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.360774, 52.498318],
+      },
+      properties: {
+        title: "Attis Spät",
+        description: "Attis Späti",
+        toilette: false,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.445628, 52.477389],
+      },
+      properties: {
+        title: "Späti - Neukölln",
+        description: "Späti",
         toilette: true,
         bench: false,
-        card: false
-      }
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
     },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.398602, 52.525478]  // Gesundbrunnen
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Gesundbrunnen',
-          toilette: true,
-          bench: true,
-          card: true
-        }
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.384803, 52.507608],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.413573, 52.526414]  // Humboldthain
+      properties: {
+        title: "Späti at Alexanderplatz",
+        description: "Späti at Alexanderplatz",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Humboldthain',
-          toilette: false,
-          bench: false,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.389954, 52.517037]  // Hackescher Markt
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Hackescher Markt',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.453208, 52.501583],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.379419, 52.531677]  // Wedding
+      properties: {
+        title: "Späti at Warschauer Straße",
+        description: "Späti at Warschauer Straße",
+        toilette: true,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Wedding',
-          toilette: true,
-          bench: false,
-          card: false
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.398167, 52.539280]  // Pankow
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Pankow',
-          toilette: true,
-          bench: true,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.438172, 52.513191],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.406109, 52.551869]  // Rosenthal
+      properties: {
+        title: "Späti at Prenzlauer Berg",
+        description: "Späti at Prenzlauer Berg",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Rosenthal',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.444384, 52.558173]  // Heinersdorf
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Heinersdorf',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.388163, 52.482931],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.374903, 52.543739]  // Reinickendorf
+      properties: {
+        title: "Späti at Kreuzberg",
+        description: "Späti at Kreuzberg",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Reinickendorf',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.325946, 52.559759]  // Tegel
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Tegel',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.342999, 52.515807],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.298786, 52.574981]  // Konradshöhe
+      properties: {
+        title: "Späti at Charlottenburg",
+        description: "Späti at Charlottenburg",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Konradshöhe',
-          toilette: false,
-          bench: true,
-          card: false
-
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.357517, 52.490543]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Schöneberg 1',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.479615, 52.497489],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.350156, 52.494442]
+      properties: {
+        title: "Späti at Friedrichshain",
+        description: "Späti at Friedrichshain",
+        toilette: false,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Schöneberg 2',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.343876, 52.487901]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Schöneberg 3',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.389954, 52.517037],
       },
-      // Friedrichshain
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.453208, 52.501583]
+      properties: {
+        title: "Späti",
+        description: "Späti at Hackescher Markt",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Friedrichshain 1',
-          toilette: true,
-          bench: false,
-          card: false
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.467442, 52.509864]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Friedrichshain 2',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.379419, 52.531677],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.447216, 52.507422]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Friedrichshain 3',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+      properties: {
+        title: "Späti",
+        description: "Späti at Wedding",
+        toilette: true,
+        bench: false,
+        card: false,
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.453500, 52.515219]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Friedrichshain 4',
-          toilette: false,
-          bench: false,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.398602, 52.525478],
       },
-      // Kreuzberg
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.388163, 52.482931]
+      properties: {
+        title: "Späti",
+        description: "Späti at Gesundbrunnen",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Kreuzberg 1',
-          toilette: false,
-          bench: false,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.396407, 52.488134]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Kreuzberg 2',
-          toilette: true,
-          bench: true,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.413573, 52.526414],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.382398, 52.490213]
+      properties: {
+        title: "Späti",
+        description: "Späti at Humboldthain",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Kreuzberg 3',
-          toilette: false,
-          bench: true,
-          card: false
-        }
+        sternburg_price: "€2.70",
       },
-      // Moabit
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.339467, 52.526942]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Moabit 1',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.434275, 52.500391],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.344784, 52.530776]
+      properties: {
+        title: "Späti",
+        description: "Späti at Landsberger Allee",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Moabit 2',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.355356, 52.525326]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Moabit 3',
-          toilette: true,
-          bench: false,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.380672, 52.515074],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.352115, 52.533057]
+      properties: {
+        title: "Späti",
+        description: "Späti at Ernst-Reuter-Platz",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Moabit 4',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.348273, 52.528412]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Moabit 5',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.396407, 52.488134],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.388860, 52.517037]
+      properties: {
+        title: "Späti",
+        description: "Späti at Mehringdamm",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Alexanderplatz',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.378262, 52.520645]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Brandenburg Gate',
-          toilette: true,
-          bench: false,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.449619, 52.519997],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.393860, 52.525589]
+      properties: {
+        title: "Späti",
+        description: "Späti at Frankfurter Allee",
+        toilette: false,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Museum Island',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.399602, 52.519667]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Rosenthaler Platz',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.428517, 52.482726],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.397634, 52.511376]
+      properties: {
+        title: "Späti",
+        description: "Späti at Tempelhofer Feld",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Checkpoint Charlie',
-          toilette: false,
-          bench: false,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      // Charlottenburg
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.305353, 52.516274]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Charlottenburg Palace',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.365596, 52.503007],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.304834, 52.511598]
+      properties: {
+        title: "Späti",
+        description: "Späti at Tiergarten",
+        toilette: false,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Savignyplatz',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.312116, 52.503634]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Deutsche Oper',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.324204, 52.496507],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.318865, 52.507364]
+      properties: {
+        title: "Späti",
+        description: "Späti at Westend",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Wilmersdorfer Straße',
-          toilette: false,
-          bench: true,
-          card: false
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.331601, 52.511834]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti at Zoologischer Garten',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.389528, 52.457656],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.409800, 52.511998]
+      properties: {
+        title: "Späti",
+        description: "Späti at Baumschulenweg",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti near Märkisches Museum 1',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.406200, 52.510200]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti near Märkisches Museum 2',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.483834, 52.474607],
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.403500, 52.508500]
+      properties: {
+        title: "Späti",
+        description: "Späti at Karlshorst",
+        toilette: true,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti near Märkisches Museum 3',
-          toilette: true,
-          bench: true,
-          card: false
-        }
+        sternburg_price: "€2.70",
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.400800, 52.507000]
-        },
-        properties: {
-          title: 'Späti',
-          description: 'Späti near Checkpoint Charlie 1',
-          toilette: false,
-          bench: true,
-          card: true
-        }
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.398602, 52.525478], // Gesundbrunnen
       },
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Point',
-          coordinates: [13.399300, 52.511000]
+      properties: {
+        title: "Späti",
+        description: "Späti at Gesundbrunnen",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
         },
-        properties: {
-          title: 'Späti',
-          description: 'Späti near Checkpoint Charlie 2',
-          toilette: true,
-          bench: false,
-          card: true
-        }
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.413573, 52.526414], // Humboldthain
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Humboldthain",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.389954, 52.517037], // Hackescher Markt
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Hackescher Markt",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.379419, 52.531677], // Wedding
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Wedding",
+        toilette: true,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.398167, 52.53928], // Pankow
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Pankow",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.406109, 52.551869], // Rosenthal
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Rosenthal",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.444384, 52.558173], // Heinersdorf
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Heinersdorf",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.374903, 52.543739], // Reinickendorf
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Reinickendorf",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.325946, 52.559759], // Tegel
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Tegel",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.298786, 52.574981], // Konradshöhe
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Konradshöhe",
+        toilette: false,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.357517, 52.490543],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Schöneberg 1",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.350156, 52.494442],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Schöneberg 2",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.343876, 52.487901],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Schöneberg 3",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    // Friedrichshain
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.453208, 52.501583],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Friedrichshain 1",
+        toilette: true,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.467442, 52.509864],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Friedrichshain 2",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.447216, 52.507422],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Friedrichshain 3",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.4535, 52.515219],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Friedrichshain 4",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    // Kreuzberg
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.388163, 52.482931],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Kreuzberg 1",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.396407, 52.488134],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Kreuzberg 2",
+        toilette: true,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.382398, 52.490213],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Kreuzberg 3",
+        toilette: false,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    // Moabit
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.339467, 52.526942],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Moabit 1",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.344784, 52.530776],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Moabit 2",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.355356, 52.525326],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Moabit 3",
+        toilette: true,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.352115, 52.533057],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Moabit 4",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.348273, 52.528412],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Moabit 5",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.38886, 52.517037],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Alexanderplatz",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.378262, 52.520645],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Brandenburg Gate",
+        toilette: true,
+        bench: false,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.39386, 52.525589],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Museum Island",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.399602, 52.519667],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Rosenthaler Platz",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.397634, 52.511376],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Checkpoint Charlie",
+        toilette: false,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    // Charlottenburg
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.305353, 52.516274],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Charlottenburg Palace",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.304834, 52.511598],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Savignyplatz",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.312116, 52.503634],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Deutsche Oper",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.318865, 52.507364],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Wilmersdorfer Straße",
+        toilette: false,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.331601, 52.511834],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti at Zoologischer Garten",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.4098, 52.511998],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti near Märkisches Museum 1",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.4062, 52.5102],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti near Märkisches Museum 2",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.4035, 52.5085],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti near Märkisches Museum 3",
+        toilette: true,
+        bench: true,
+        card: false,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.4008, 52.507],
+      },
+      properties: {
+        title: "Späti",
+        description: "Späti near Checkpoint Charlie 1",
+        toilette: false,
+        bench: true,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
+      },
+    },
+    {
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: [13.3993, 52.511],
+      },
+      properties: {
+        title: "Späti Checkpoint",
+        description: "Späti near Checkpoint Charlie 2",
+        toilette: true,
+        bench: false,
+        card: true,
+        address: "Simon-Dach-Straße 21",
+        opening_hours: {
+          monday: ["10:00 - 22:00"],
+          tuesday: ["10:00 - 22:00"],
+          wednesday: ["10:00 - 22:00"],
+          thursday: ["10:00 - 22:00"],
+          friday: ["10:00 - 22:00"],
+          saturday: ["10:00 - 22:00"],
+          sunday: ["10:00 - 22:00"],
+        },
+        sternburg_price: "€2.70",
       }
-    ]
-  };
+    }
+  ],
+};

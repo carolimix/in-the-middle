@@ -1,14 +1,24 @@
 .addSpati {
-  margin-top:50px;
+  margin-top: 50px;
   margin-bottom: 50px;
   width: 100%;
   text-align: center;
-  
+}
+
+#sidebar {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 22%;
+  right: 0;
+  background: rgb(214, 213, 213, 0.9);
+  overflow-y: auto;
 }
 
 .addSpati h3 {
   text-align: center;
-  margin-bottom: 0;;
+  margin-bottom: 0;
 }
 
 .addSpati button {
@@ -48,3 +58,36 @@
 .item3 label {
   margin: 5px;
 }
+
+#results .eachSpatiSideBar {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  margin:0 !important;
+}
+
+.eachSpatiSideBar h3 {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.eachSpatiSideBar:hover {
+  background-color: #E8E6E6;
+  cursor: pointer;
+}
+
+.spatiSideBarDescription p {
+  padding-top: 3px !important;
+  margin-top: 3px !important;
+}
+
+#closeMapSideBar {
+  text-align: right;
+  font-size: 22px;
+  margin: 8px;
+}
+
+#closeMapSideBar:hover {
+  color: #919191;
+  font-weight: bold;
+  cursor: pointer;
+}
+

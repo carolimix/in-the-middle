@@ -4,6 +4,7 @@ export default function createMarker(n) {
   const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
     `</br>
   <b style="color: black">
+    ${n.properties.title}
     ${n.properties.description}
    <p> Toilet: ${n.properties.toilette ? "Yes" : "No"} </p>
    <p> Benches: ${n.properties.bench ? "Yes" : "No"} </p>
