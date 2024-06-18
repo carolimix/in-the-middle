@@ -1,14 +1,14 @@
 import mapboxgl from "mapbox-gl";
+import Mapbox from "../components/Mapbox";
 
 export default function createMarker(n) {
+
+  // n are the spatis and el are the divs
+ 
   const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
     `</br>
   <b style="color: black">
-    ${n.properties.title}
     ${n.properties.description}
-   <p> Toilet: ${n.properties.toilette ? "Yes" : "No"} </p>
-   <p> Benches: ${n.properties.bench ? "Yes" : "No"} </p>
-   <p> Card: ${n.properties.card ? "Yes" : "No"} </p>
   </b>
 </br>`
   );
@@ -20,5 +20,10 @@ export default function createMarker(n) {
   marker
     .setLngLat([n.geometry.coordinates[0], n.geometry.coordinates[1]])
     .setPopup(popup);
+    marker.getElement().addEventListener('click', () => {
+      console.log("Marker clicked");
+      //call a mapbox function
+      //call a function to show the spati clicked on the sidebar!
+    });
   return marker;
 }

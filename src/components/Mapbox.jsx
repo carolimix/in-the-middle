@@ -25,8 +25,7 @@ function Mapbox() {
   const [adressTyped, setAdressTyped] = useState(false);
   const [threeClosestSpatis, setThreeClosestSpatis] = useState("");
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const [isSpecificSpatiClicked, setisSpecificSpatiClicked] = useState(false);
-  
+  const [specificSpatiClicked, setSpecificSpatiClicked] = useState("");
 
   const handleCheckBox = (benches, toilet, card) => {
     setBenches(benches);
@@ -89,7 +88,6 @@ function Mapbox() {
     setMarkers(markers);
   }, [lat, lng, spatis, markers]);
 
-
   useEffect(() => {
     if (!map.current) return;
 
@@ -97,7 +95,7 @@ function Mapbox() {
       center: [lng, lat],
       zoom: adressTyped ? 15 : 12,
     });
-    console.log("use effect renderizando")
+    console.log("use effect renderizando");
   }, [lng, lat, adressTyped]);
 
   // Function to calculate distance between two coordinates using Haversine formula
@@ -113,8 +111,8 @@ function Mapbox() {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
-    console.log("distance")
-    console.log(distance)
+    console.log("distance");
+    console.log(distance);
     return distance;
   };
 
@@ -149,7 +147,7 @@ function Mapbox() {
     setThreeClosestSpatis(sortedSpatisNear);
     setSidebarOpen(true);
 
-    console.log(sortedSpatisNear)
+    console.log(sortedSpatisNear);
 
     let closest = null;
     let closestDistance = Number.MAX_VALUE;
@@ -197,7 +195,6 @@ function Mapbox() {
     //  setMarkers(markers);
   }
 
-
   const navigate = useNavigate();
 
   const handleAddSpatiClick = () => {
@@ -206,20 +203,32 @@ function Mapbox() {
 
   function closeMapSideBar(e) {
     setSidebarOpen(false);
+    setSpecificSpatiClicked("");
   }
 
-  function approximateSpationMap(a, b) {
-
-    setisSpecificSpatiClicked(true);
+  function approximateSpationMap(a, b, specificSpatiClicked) {
+    setSpecificSpatiClicked(specificSpatiClicked);
 
     map.current.flyTo({
       center: [a, b],
-      zoom:16,
+      zoom: 16,
     });
-
-
   }
 
+  // Helper function to get today's opening hours
+  const getTodayOpeningHours = (openingHours) => {
+    const dayIndex = new Date().getDay();
+    const days = [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+    ];
+    return openingHours[days[dayIndex]] || "No information found";
+  };
 
   return (
     <div>
@@ -228,114 +237,79 @@ function Mapbox() {
         handleCheckBox={handleCheckBox}
       />
 
-
       <div ref={mapContainer} className="map-container">
+        {threeClosestSpatis === "" || !isSidebarOpen ? null : (
+          <div id="sidebar">
+            <div id="closeMapSideBar" onClick={closeMapSideBar}>
+              X
+            </div>
+            <div id="results">
+              {threeClosestSpatis.map((spati, index) => (
+                <div
+                  key={index}
+                  className="eachSpatiSideBar"
+                  onClick={() =>
+                    approximateSpationMap(
+                      spati.geometry.coordinates[0],
+                      spati.geometry.coordinates[1],
+                      index
+                    )
+                  }
+                >
+                  <div className="firstDetailsSpatiList">
+                  <h3>{spati.properties.description.toUpperCase()}</h3>
+                  <p>{spati.properties.sternburg_price} a Sterni</p>
+                  <p>{spati.properties.address}</p>
+                  <p>
+                  Today:{" "}
+                     {getTodayOpeningHours(spati.properties.opening_hours)}
+                  </p>
+                  </div>
+                  <div className="secondDetailsSpatiList">
+                  <p>
+                    {spati.properties.benches ? "🪑 Has benches" : "🪑 No benches"}
+                  </p>
+                  <p>
+                    {spati.properties.toilette ? "🚽 Has toilet" : "🚽 No toilet"}
+                  </p>
+                  <p>{spati.properties.card ? "💳 Accepts card" : "💳 No card"}</p>
+                  </div>
+                
 
-      {threeClosestSpatis === "" || !isSidebarOpen ? null : (
-      <div id="sidebar">
-        <div id="closeMapSideBar" onClick={closeMapSideBar}>X</div>
-          <div id="results">
-          
-          <div className="eachSpatiSideBar" onClick={() => approximateSpationMap(threeClosestSpatis[0].geometry.coordinates[0],threeClosestSpatis[0].geometry.coordinates[1])}>
-             <h3>{threeClosestSpatis[0].properties.description.toUpperCase()}</h3>
-             <p>{threeClosestSpatis[0].properties.sternburg_price} a Sterni</p>
-             <p>{threeClosestSpatis[0].properties.address}</p>
-             <p>{threeClosestSpatis[0].properties.benches == true ? "Has benches" : false}</p>
-             <p> {threeClosestSpatis[0].properties.toilette == true ? "Has toilet" : false}</p>
-             <p> {threeClosestSpatis[0].properties.card == true ? "Accept card" : false} </p>
-
-             <p>Today:
-              {date.getDay() == 0 ? 
-             threeClosestSpatis[0].properties.opening_hours.sunday : 
-             (date.getDay() == 1 ?
-             threeClosestSpatis[0].properties.opening_hours.monday :
-             (date.getDay == 2 ?
-             threeClosestSpatis[0].properties.opening_hours.tuesday :
-             (date.getDay == 3 ?
-             threeClosestSpatis[0].properties.opening_hours.wednesday :
-             (date.getDay == 4 ?
-             threeClosestSpatis[0].properties.opening_hours.thursday :
-             (date.getDay == 5 ?
-             threeClosestSpatis[0].properties.opening_hours.friday :
-             (date.getDay == 6 ?
-             threeClosestSpatis[0].properties.opening_hours.saturday : "no information found"
-            )
-          )))))
-          }</p>
-
-          {!isSpecificSpatiClicked ? false : (
-            <p>extra!</p>
-          )
-          }
+                 
+                  {specificSpatiClicked === index && (
+                    <div className="openHours">
+                      <p>Monday: {spati.properties.opening_hours.monday}</p>
+                      <p>Tuesday: {spati.properties.opening_hours.tuesday}</p>
+                      <p>
+                        Wednesday: {spati.properties.opening_hours.wednesday}
+                      </p>
+                      <p>Thursday: {spati.properties.opening_hours.thursday}</p>
+                      <p>Friday: {spati.properties.opening_hours.friday}</p>
+                      <p>Saturday: {spati.properties.opening_hours.saturday}</p>
+                      <p>Sunday: {spati.properties.opening_hours.sunday}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
-
-          <div className="eachSpatiSideBar" onClick={() => approximateSpationMap(threeClosestSpatis[1].geometry.coordinates[0],threeClosestSpatis[1].geometry.coordinates[1])}>
-             <h3>{threeClosestSpatis[1].properties.description.toUpperCase()}</h3>
-             <p>{threeClosestSpatis[1].properties.sternburg_price} a Sterni</p>
-             <p>{threeClosestSpatis[1].properties.address} a Sterni</p>
-             <p>{threeClosestSpatis[1].properties.benches == true ? "Has benches" : false}</p>
-             <p> {threeClosestSpatis[1].properties.toilette == true ? "Has toilet" : false}</p>
-             <p> {threeClosestSpatis[1].properties.card == true ? "Accept card" : false} </p>
-             <p>Today:
-              {date.getDay() == 0 ? 
-             threeClosestSpatis[0].properties.opening_hours.sunday : 
-             (date.getDay() == 1 ?
-             threeClosestSpatis[0].properties.opening_hours.monday :
-             (date.getDay == 2 ?
-             threeClosestSpatis[0].properties.opening_hours.tuesday :
-             (date.getDay == 3 ?
-             threeClosestSpatis[0].properties.opening_hours.wednesday :
-             (date.getDay == 4 ?
-             threeClosestSpatis[0].properties.opening_hours.thursday :
-             (date.getDay == 5 ?
-             threeClosestSpatis[0].properties.opening_hours.friday :
-             (date.getDay == 6 ?
-             threeClosestSpatis[0].properties.opening_hours.saturday : ""
-            )
-          )))))
-          }</p>
-          </div>
-
-          <div className="eachSpatiSideBar" onClick={() => approximateSpationMap(threeClosestSpatis[2].geometry.coordinates[0],threeClosestSpatis[2].geometry.coordinates[1])}>
-             <h3>{threeClosestSpatis[2].properties.description.toUpperCase()}</h3>
-             <p>{threeClosestSpatis[2].properties.sternburg_price} a Sterni</p>
-             <p>{threeClosestSpatis[2].properties.address}</p>
-             <p>{threeClosestSpatis[2].properties.benches == true ? "Has benches" : false}</p>
-             <p> {threeClosestSpatis[2].properties.toilette == true ? "Has toilet" : false}</p>
-             <p> {threeClosestSpatis[2].properties.card == true ? "Accept card" : false} </p>
-             <p>Today:
-              {date.getDay() == 0 ? 
-             threeClosestSpatis[0].properties.opening_hours.sunday : 
-             (date.getDay() == 1 ?
-             threeClosestSpatis[0].properties.opening_hours.monday :
-             (date.getDay == 2 ?
-             threeClosestSpatis[0].properties.opening_hours.tuesday :
-             (date.getDay == 3 ?
-             threeClosestSpatis[0].properties.opening_hours.wednesday :
-             (date.getDay == 4 ?
-             threeClosestSpatis[0].properties.opening_hours.thursday :
-             (date.getDay == 5 ?
-             threeClosestSpatis[0].properties.opening_hours.friday :
-             (date.getDay == 6 ?
-             threeClosestSpatis[0].properties.opening_hours.saturday : ""
-            )
-          )))))
-          }</p>
-          </div>
-          </div>
+        )}
       </div>
-      )}
-
-</div>
-
 
       <div className="addSpati">
-      <h3>Can't find your favorite one?</h3>
-      <button onClick={handleAddSpatiClick}>+ add new spati</button>
+        <h3>Can't find your favorite one?</h3>
+        <button onClick={handleAddSpatiClick}>+ add new spati</button>
       </div>
       <footer>
-      <p> <a href="">About Us</a> </p> <p>|  </p> 
-      <p><a href="">Contact</a> </p>
+        <p>
+          {" "}
+          <a href="">About Us</a>{" "}
+        </p>{" "}
+        <p>| </p>
+        <p>
+          <a href="">Contact</a>{" "}
+        </p>
       </footer>
     </div>
   );

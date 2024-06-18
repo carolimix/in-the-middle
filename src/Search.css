@@ -14,6 +14,7 @@
   right: 0;
   background: rgb(214, 213, 213, 0.9);
   overflow-y: auto;
+  padding-bottom: 10px;
 }
 
 .addSpati h3 {
@@ -65,10 +66,7 @@
   margin:0 !important;
 }
 
-.eachSpatiSideBar h3 {
-  padding: 0 !important;
-  margin: 0 !important;
-}
+
 .eachSpatiSideBar:hover {
   background-color: #E8E6E6;
   cursor: pointer;
@@ -89,5 +87,30 @@
   color: #919191;
   font-weight: bold;
   cursor: pointer;
+}
+
+.openHours {
+  margin-top: 10px;
+}
+
+
+.openHours p {
+  padding: 0px;
+  margin: 0px;
+}
+
+.firstDetailsSpatiList p, .secondDetailsSpatiList p{
+  padding: 0px;
+  margin: 0px;
+}
+
+.firstDetailsSpatiList h3 {
+  margin-bottom: 5px;
+  margin-top: 0px;
+  color: #FF0200
+}
+
+.secondDetailsSpatiList {
+  margin-top: 3px;
 }
 
