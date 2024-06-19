@@ -5,12 +5,9 @@ export default function createMarker(n) {
     `</br>
   <b style="color: black">
     ${n.properties.description}
-    </br>
-   <p> Toilet: ${n.properties.toilette} </p>
-    </br>
-   <p> Benches: ${n.properties.bench} </p>
-    </br>
-   <p> Card: ${n.properties.card} </p>
+   <p> Toilet: ${n.properties.toilette ? "Yes" : "No"} </p>
+   <p> Benches: ${n.properties.bench ? "Yes" : "No"} </p>
+   <p> Card: ${n.properties.card ? "Yes" : "No"} </p>
   </b>
 </br>`
   );
