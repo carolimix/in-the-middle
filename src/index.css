@@ -63,18 +63,6 @@ button:focus-visible {
   }
 }
 
-.sidebar {
-  background-color: rgb(35 55 75 / 90%);
-  color: #fff;
-  padding: 6px 12px;
-  font-family: monospace;
-  z-index: 1;
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 12px;
-  border-radius: 4px;
-}
 
 .map-container {
   margin: 1% auto;
@@ -89,6 +77,14 @@ button:focus-visible {
   background-size: cover;
   width: 22px;
   height: 30px;
+  cursor: pointer;
+}
+
+.marker2 {
+  background-image: url("../src/assets/spaticlicked.png") !important;
+  background-size: cover;
+  width: 30px;
+  height: 40px;
   cursor: pointer;
 }
 

@@ -4,8 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import Search from "./Search.jsx";
 import createMarker from "../utils/createMarker.js";
 import { useNavigate } from "react-router-dom";
-import geolib from "geolib";
-import { findNearest } from "geolib";
+import { useContext } from 'react';
 
 const tokenMapBox = import.meta.env.VITE_ACCESS_TOKEN;
 mapboxgl.accessToken = tokenMapBox;
@@ -26,37 +25,44 @@ function Mapbox() {
   const [threeClosestSpatis, setThreeClosestSpatis] = useState("");
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [specificSpatiClicked, setSpecificSpatiClicked] = useState("");
+  const [clickedSpati, setClickedSpati] = useState("");
+
 
   const handleCheckBox = (benches, toilet, card) => {
     setBenches(benches);
     setToilet(toilet);
     setCard(card);
 
-    console.log(
-      "Benches: " + benches + " Toilet: " + toilet + " Card: " + card
-    );
     if (benches == true || toilet == true || card == true) {
       console.log("entrou no primeiro if");
 
       const filteredSpatis = spatis.filter((spati) => {
-        console.log(spati.properties.toilette);
-        return (
-          (benches ? spati.properties.bench == benches : null) ||
-          (toilet ? spati.properties.toilette == toilet : null) ||
-          (card ? spati.properties.card == card : null)
-        );
+
+        const hasBenchesCondition = benches ? spati.properties.bench : true; // If hasBenches is false, always return true
+  const hasToiletCondition = toilet ? spati.properties.toilette : true; // If hasToilet is false, always return true
+  const acceptsCardCondition = card ? spati.properties.card : true; // If acceptsCard is false, always return true
+
+  // Return true if all conditions are true (establishment meets all selected criteria)
+  return hasBenchesCondition && hasToiletCondition && acceptsCardCondition;
+
+    //    console.log(spati.properties.toilette);
+     //   return (
+       //   (benches ? spati.properties.bench == benches : null) ||
+        //  (toilet ? spati.properties.toilette == toilet : null) ||
+       //   (card ? spati.properties.card == card : null)
+     //   );
       });
 
       setSpatis(filteredSpatis);
-      const markerss = spatis.map((n) => createMarker(n));
+      const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
       setMarkers(markerss);
     }
-    if (benches == false && toilet == false && card == false) {
-      console.log("ENTROU");
+  if (benches == false && toilet == false && card == false) {
+    console.log("ENTROU");
       setSpatis(geojson.features);
-      const markerss = spatis.map((n) => createMarker(n));
-      setMarkers(markerss);
-    }
+      const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
+     setMarkers(markerss);
+  }
   };
 
   useEffect(() => {
@@ -84,7 +90,7 @@ function Mapbox() {
       zoom: 12,
     });
 
-    const markers = spatis.map((n) => createMarker(n));
+    const markers = spatis.map((n) => createMarker(n, setClickedSpati));
     setMarkers(markers);
   }, [lat, lng, spatis, markers]);
 
@@ -121,6 +127,7 @@ function Mapbox() {
   };
 
   function addMarkersOnMap(e) {
+    setClickedSpati(null)
     setAdressTyped(true);
 
     const currentAddress = new mapboxgl.LngLat(e[0], e[1]);
@@ -203,17 +210,24 @@ function Mapbox() {
 
   function closeMapSideBar(e) {
     setSidebarOpen(false);
+    setThreeClosestSpatis("")
     setSpecificSpatiClicked("");
+    setClickedSpati(null)
   }
 
   function approximateSpationMap(a, b, specificSpatiClicked) {
     setSpecificSpatiClicked(specificSpatiClicked);
-
     map.current.flyTo({
       center: [a, b],
       zoom: 16,
     });
   }
+
+  function backToNearestSpatis() {
+    setClickedSpati("");
+  }
+
+
 
   // Helper function to get today's opening hours
   const getTodayOpeningHours = (openingHours) => {
@@ -238,12 +252,75 @@ function Mapbox() {
       />
 
       <div ref={mapContainer} className="map-container">
-        {threeClosestSpatis === "" || !isSidebarOpen ? null : (
-          <div id="sidebar">
-            <div id="closeMapSideBar" onClick={closeMapSideBar}>
+
+      {clickedSpati && (
+          <div className="sidebar">
+
+            <div id="sidebarTop">
+              <div className="closeMapSideBar closeOneSpati" onClick={closeMapSideBar}>
               X
-            </div>
-            <div id="results">
+              </div>
+
+              {threeClosestSpatis == "" ? null : (
+              <div className="backSpatiSidebar" onClick={backToNearestSpatis}>
+              ◄ back
+              </div>      
+
+            )}
+             </div>  
+            <div className="results">
+              <div className="oneSpatiSideBar">
+           
+            {/* Render other information from clickedSpati */}
+
+            <div className="firstDetailsSpatiList">
+                  <h3>{clickedSpati.properties.description.toUpperCase()}</h3>
+                  <p>{clickedSpati.properties.sternburg_price} a Sterni</p>
+                  <p>{clickedSpati.properties.address}</p>
+                  <p>
+                  Today:{" "}
+                     {getTodayOpeningHours(clickedSpati.properties.opening_hours)}
+                  </p>
+                  </div>
+                  <div className="secondDetailsSpatiList">
+                  <p>
+                    {clickedSpati.properties.bench ? "🪑 Has benches" : "🪑 No benches"}
+                  </p>
+                  <p>
+                    {clickedSpati.properties.toilette ? "🚽 Has toilet" : "🚽 No toilet"}
+                  </p>
+                  <p>{clickedSpati.properties.card ? "💳 Accepts card" : "💳 No card"}</p>
+                  </div>
+                
+
+                    <div className="openHours">
+                      <p>Monday: {clickedSpati.properties.opening_hours.monday}</p>
+                      <p>Tuesday: {clickedSpati.properties.opening_hours.tuesday}</p>
+                      <p>
+                        Wednesday: {clickedSpati.properties.opening_hours.wednesday}
+                      </p>
+                      <p>Thursday: {clickedSpati.properties.opening_hours.thursday}</p>
+                      <p>Friday: {clickedSpati.properties.opening_hours.friday}</p>
+                      <p>Saturday: {clickedSpati.properties.opening_hours.saturday}</p>
+                      <p>Sunday: {clickedSpati.properties.opening_hours.sunday}</p>
+                    </div>
+
+                    </div>
+                
+           
+          </div>
+          </div>
+        )}
+     
+
+        {threeClosestSpatis === "" || !isSidebarOpen || clickedSpati ? null : (
+          <div className="sidebar">
+            <div id="sidebarTop">
+              <div className="closeMapSideBar" onClick={closeMapSideBar}>
+              X
+              </div>
+              </div> 
+            <div className="results">
               {threeClosestSpatis.map((spati, index) => (
                 <div
                   key={index}
@@ -267,7 +344,7 @@ function Mapbox() {
                   </div>
                   <div className="secondDetailsSpatiList">
                   <p>
-                    {spati.properties.benches ? "🪑 Has benches" : "🪑 No benches"}
+                    {spati.properties.bench ? "🪑 Has benches" : "🪑 No benches"}
                   </p>
                   <p>
                     {spati.properties.toilette ? "🚽 Has toilet" : "🚽 No toilet"}

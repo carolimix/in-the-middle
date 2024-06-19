@@ -5,7 +5,7 @@
   text-align: center;
 }
 
-#sidebar {
+.sidebar {
   z-index: 1;
   position: absolute;
   top: 0;
@@ -60,7 +60,13 @@
   margin: 5px;
 }
 
-#results .eachSpatiSideBar {
+.results .eachSpatiSideBar {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  margin:0 !important;
+}
+
+.oneSpatiSideBar {
   border-bottom: 1px solid #ccc;
   padding: 10px;
   margin:0 !important;
@@ -77,13 +83,20 @@
   margin-top: 3px !important;
 }
 
-#closeMapSideBar {
-  text-align: right;
-  font-size: 22px;
-  margin: 8px;
+.backSpatiSidebar {
+  text-align: left;
+  font-size: 15px;
+  padding-top: 3px;
 }
 
-#closeMapSideBar:hover {
+.closeMapSideBar {
+  text-align: right;
+  font-size: 22px;
+  margin-right:10px;
+  
+}
+
+.closeMapSideBar:hover, .backSpatiSidebar:hover {
   color: #919191;
   font-weight: bold;
   cursor: pointer;
@@ -114,3 +127,20 @@
   margin-top: 3px;
 }
 
+#sidebarTop {
+  width: 100%;
+  margin: 8px;
+}
+
+#sidebarTop.backSpatiSidebar {
+  float: left;
+}
+
+#sidebarTop .closeMapSideBar {
+  float: right;
+  padding-left: 14px;
+}
+
+.closeOneSpati {
+  margin-right: 13px !important;
+}

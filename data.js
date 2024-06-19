@@ -652,7 +652,7 @@ export const geojson = {
         description: "Späti at Westend",
         toilette: true,
         bench: true,
-        card: true,
+        card: false,
         address: "Simon-Dach-Straße 21",
         opening_hours: {
           monday: ["10:00 - 22:00"],
