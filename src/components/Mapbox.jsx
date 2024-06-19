@@ -11,6 +11,7 @@ const tokenMapBox = import.meta.env.VITE_ACCESS_TOKEN;
 mapboxgl.accessToken = tokenMapBox;
 
 function Mapbox() {
+  const date = new Date();
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(13.3885);
@@ -22,7 +23,9 @@ function Mapbox() {
   const [toilet, setToilet] = useState();
   const [card, setCard] = useState();
   const [adressTyped, setAdressTyped] = useState(false);
-  const [threeClosestSpatis, setThreeClosestSpatis] = useState(false);
+  const [threeClosestSpatis, setThreeClosestSpatis] = useState("");
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
+  const [specificSpatiClicked, setSpecificSpatiClicked] = useState("");
 
   const handleCheckBox = (benches, toilet, card) => {
     setBenches(benches);
@@ -92,6 +95,7 @@ function Mapbox() {
       center: [lng, lat],
       zoom: adressTyped ? 15 : 12,
     });
+    console.log("use effect renderizando");
   }, [lng, lat, adressTyped]);
 
   // Function to calculate distance between two coordinates using Haversine formula
@@ -107,6 +111,8 @@ function Mapbox() {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
+    console.log("distance");
+    console.log(distance);
     return distance;
   };
 
@@ -122,11 +128,9 @@ function Mapbox() {
     // Ensure userLocation and establishments are populated
 
     // Find the closest establishment
-   /* let closest = null;
-    let closestDistance = Number.MAX_VALUE;
 
     //get the 3 nearest spatis
-    const sortedSpatis = spatis
+    const closestSpatis = spatis
       .map((est) => ({
         ...est,
         distance: calculateDistance(
@@ -139,8 +143,11 @@ function Mapbox() {
       .sort((a, b) => a.distance - b.distance);
 
     // Pegar os três mais próximos
-    const sortesSpatisNear = sortedSpatis.slice(0, 3);
-    setThreeClosestSpatis(sortesSpatisNear);*/
+    const sortedSpatisNear = closestSpatis.slice(0, 3);
+    setThreeClosestSpatis(sortedSpatisNear);
+    setSidebarOpen(true);
+
+    console.log(sortedSpatisNear);
 
     let closest = null;
     let closestDistance = Number.MAX_VALUE;
@@ -194,6 +201,35 @@ function Mapbox() {
     navigate("/add");
   };
 
+  function closeMapSideBar(e) {
+    setSidebarOpen(false);
+    setSpecificSpatiClicked("");
+  }
+
+  function approximateSpationMap(a, b, specificSpatiClicked) {
+    setSpecificSpatiClicked(specificSpatiClicked);
+
+    map.current.flyTo({
+      center: [a, b],
+      zoom: 16,
+    });
+  }
+
+  // Helper function to get today's opening hours
+  const getTodayOpeningHours = (openingHours) => {
+    const dayIndex = new Date().getDay();
+    const days = [
+      "sunday",
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+    ];
+    return openingHours[days[dayIndex]] || "No information found";
+  };
+
   return (
     <div>
       <Search
@@ -201,16 +237,79 @@ function Mapbox() {
         handleCheckBox={handleCheckBox}
       />
 
+      <div ref={mapContainer} className="map-container">
+        {threeClosestSpatis === "" || !isSidebarOpen ? null : (
+          <div id="sidebar">
+            <div id="closeMapSideBar" onClick={closeMapSideBar}>
+              X
+            </div>
+            <div id="results">
+              {threeClosestSpatis.map((spati, index) => (
+                <div
+                  key={index}
+                  className="eachSpatiSideBar"
+                  onClick={() =>
+                    approximateSpationMap(
+                      spati.geometry.coordinates[0],
+                      spati.geometry.coordinates[1],
+                      index
+                    )
+                  }
+                >
+                  <div className="firstDetailsSpatiList">
+                  <h3>{spati.properties.description.toUpperCase()}</h3>
+                  <p>{spati.properties.sternburg_price} a Sterni</p>
+                  <p>{spati.properties.address}</p>
+                  <p>
+                  Today:{" "}
+                     {getTodayOpeningHours(spati.properties.opening_hours)}
+                  </p>
+                  </div>
+                  <div className="secondDetailsSpatiList">
+                  <p>
+                    {spati.properties.benches ? "🪑 Has benches" : "🪑 No benches"}
+                  </p>
+                  <p>
+                    {spati.properties.toilette ? "🚽 Has toilet" : "🚽 No toilet"}
+                  </p>
+                  <p>{spati.properties.card ? "💳 Accepts card" : "💳 No card"}</p>
+                  </div>
+                
 
-      <div ref={mapContainer} className="map-container"></div>
+                 
+                  {specificSpatiClicked === index && (
+                    <div className="openHours">
+                      <p>Monday: {spati.properties.opening_hours.monday}</p>
+                      <p>Tuesday: {spati.properties.opening_hours.tuesday}</p>
+                      <p>
+                        Wednesday: {spati.properties.opening_hours.wednesday}
+                      </p>
+                      <p>Thursday: {spati.properties.opening_hours.thursday}</p>
+                      <p>Friday: {spati.properties.opening_hours.friday}</p>
+                      <p>Saturday: {spati.properties.opening_hours.saturday}</p>
+                      <p>Sunday: {spati.properties.opening_hours.sunday}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
 
       <div className="addSpati">
-      <h3>Can't find your favorite one?</h3>
-      <button onClick={handleAddSpatiClick}>+ add new spati</button>
+        <h3>Can't find your favorite one?</h3>
+        <button onClick={handleAddSpatiClick}>+ add new spati</button>
       </div>
       <footer>
-      <p> <a href="">About Us</a> </p> <p>|  </p> 
-      <p><a href="">Contact</a> </p>
+        <p>
+          {" "}
+          <a href="">About Us</a>{" "}
+        </p>{" "}
+        <p>| </p>
+        <p>
+          <a href="">Contact</a>{" "}
+        </p>
       </footer>
     </div>
   );
