@@ -36,27 +36,27 @@ function Mapbox() {
     if (benches == true || toilet == true || card == true) {
       console.log("entrou no primeiro if");
 
-      const filteredSpatis = spatis.filter((spati) => {
-
+      const filteredSpatis = geojson.features.filter((spati) => {
         const hasBenchesCondition = benches ? spati.properties.bench : true; // If hasBenches is false, always return true
-  const hasToiletCondition = toilet ? spati.properties.toilette : true; // If hasToilet is false, always return true
-  const acceptsCardCondition = card ? spati.properties.card : true; // If acceptsCard is false, always return true
+        const hasToiletCondition = toilet ? spati.properties.toilette : true; // If hasToilet is false, always return true
+        const acceptsCardCondition = card ? spati.properties.card : true; // If acceptsCard is false, always return true
 
-  // Return true if all conditions are true (establishment meets all selected criteria)
-  return hasBenchesCondition && hasToiletCondition && acceptsCardCondition;
+        // Return true if all conditions are true (establishment meets all selected criteria)
+        return hasBenchesCondition && hasToiletCondition && acceptsCardCondition;
 
-    //    console.log(spati.properties.toilette);
-     //   return (
-       //   (benches ? spati.properties.bench == benches : null) ||
-        //  (toilet ? spati.properties.toilette == toilet : null) ||
-       //   (card ? spati.properties.card == card : null)
-     //   );
+        //    console.log(spati.properties.toilette);
+        //   return (
+          //   (benches ? spati.properties.bench == benches : null) ||
+            //  (toilet ? spati.properties.toilette == toilet : null) ||
+          //   (card ? spati.properties.card == card : null)
+        //   );
       });
 
-      setSpatis(filteredSpatis);
-      const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
-      setMarkers(markerss);
-    }
+    setSpatis(filteredSpatis);
+    const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
+    setMarkers(markerss);
+  }
+
   if (benches == false && toilet == false && card == false) {
     console.log("ENTROU");
       setSpatis(geojson.features);
