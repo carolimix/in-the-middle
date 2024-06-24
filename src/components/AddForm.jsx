@@ -1,17 +1,22 @@
 import { useState, useRef } from "react";
-import Search from "./Search.jsx";
 import { useNavigate } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { Outlet } from "react-router-dom";
 import { SearchBox } from "@mapbox/search-js-react";
+import Logo from "./Logo.jsx";
 const tokenMapBox = import.meta.env.VITE_ACCESS_TOKEN;
 const publicId = import.meta.env.VITE_EMAILJS_KEY;
+import "../Search.css";
+import "../index.css";
 
 
 
 const AddForm = () => {
 
   const [value, setValue] = useState("");
+  const [errorFormValidation, setErrorFormValidation] = useState("");
+  const [sendingForm, setSendingForm] = useState("");
+  const [isFormSent, setIsFormSent] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     coordinates: "",
@@ -23,14 +28,18 @@ const AddForm = () => {
     sterniPrice: "",
   });
   const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    console.log(event)
+    event.preventDefault();
     if (!isFormValid()) {
-      alert("Please, fill out every field");
-      return;
-    }
+      setErrorFormValidation("⚠️ Please, fill out every field!");
+    } else {
+      
+      setErrorFormValidation("");
+      setSendingForm("🔄 The form is being processed!")
     handleEmail();
-    handleNewSpati();
+   
+  }
   };
   const handleNewSpati = () => {
     navigate("/add/newspati");
@@ -40,8 +49,6 @@ const AddForm = () => {
     console.log(publicId)
 
     const data = { ...formData };
-    console.log
-    console.log("Sending email with data:", data);
     emailjs
       .send(
         import.meta.env.VITE_YOUR_SERVICE_ID,
@@ -50,20 +57,28 @@ const AddForm = () => {
       )
       .then(
         (result) => {
+
+          setSendingForm("");
+          setIsFormSent(true);
+          handleNewSpati();
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Optional: smooth scrolling behavior
+        });
           console.log("Email sent:", result.text);
         },
         (error) => {
+          setSendingForm("");
+          setErrorFormValidation("An error occurred on our server. Please try again later!")
           console.log(error);
         }
       );
   };
   const handleSearch = (coordinates, value) => {
-    console.log(coordinates, value);
     setFormData((prevState) => ({
       ...prevState,
       coordinates,
     }));
-    console.log("coordinates: ", coordinates);
      };
   const handleOnChange = (e) => {
     setFormData((prevState) => ({
@@ -85,14 +100,41 @@ const AddForm = () => {
     }
     return options;
   };
+
+  const comeBackToTheForm = () => {
+    setIsFormSent(false)
+    formData.name = "";
+    formData.coordinates = "";
+    formData.hasToilette = "";
+    formData.hasTable = "";
+    formData.sellsFood = "";
+    formData.hasAtm = "";
+    formData.hasCardPayment = "";
+    formData.sterniPrice = "";
+    console.log(formData)
+ 
+  };
   return (
+
     <div>
-      <h1>Is your favorite spati missing?</h1>
-      <h2>Fill out the information here and we will added to our map</h2>
+  
+   <div id="addForm">
+    <Logo />
+
+    {isFormSent ? (
+      <div id="backToTheSpati">
+      <a onClick={() => comeBackToTheForm()}> ◄ back to the form</a>
+      </div>
+    ) : (
+
+     <div id="formContent">
+      <h1>Is your favorite späti missing?</h1>
+      <h2>Fill out the information below and we will add it to our map :)</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="addFormSession">
           <label htmlFor='name'>Name:</label>
           <input
+            className="addSpatiInput"
             type='text'
             id='name'
             name='name'
@@ -100,7 +142,7 @@ const AddForm = () => {
             onChange={handleOnChange}
           />
         </div>
-        <div>
+        <div className="addFormSession">
           <label htmlFor='address'>Address:</label>
           <SearchBox
           
@@ -109,10 +151,10 @@ const AddForm = () => {
           onRetrieve={handleSearch}
           accessToken={tokenMapBox}
         />
-          <div style={{ marginBottom: "10px" }} /> 
         </div>
         <div>
-          <h3>Extra info</h3>
+          <h3>Extra info:</h3>
+          <div className="addFormSession">
           <legend>Does it have a toilette?</legend>
           <label>
             <input
@@ -134,6 +176,9 @@ const AddForm = () => {
             />{" "}
             No
           </label>
+          </div>
+
+          <div className="addFormSession">
           <legend>Does it have tables outside?</legend>
           <label>
             <input
@@ -155,7 +200,10 @@ const AddForm = () => {
             />{" "}
             No
           </label>
-          <legend>Does it sells food?e.g bakery items</legend>
+          </div>
+
+          <div className="addFormSession">
+          <legend>Does it sells food? e.g bakery items</legend>
           <label>
             <input
               type='radio'
@@ -176,6 +224,8 @@ const AddForm = () => {
             />{" "}
             No
           </label>
+          </div>
+          <div className="addFormSession">
           <legend>Is there an ATM?</legend>
           <label>
             <input
@@ -197,6 +247,8 @@ const AddForm = () => {
             />{" "}
             No
           </label>
+          </div>
+          <div className="addFormSession">
           <legend>Is card payment available?</legend>
           <label>
             <input
@@ -218,7 +270,8 @@ const AddForm = () => {
             />{" "}
             No
           </label>
-          <div>
+         </div>
+         <div className="addFormSession">
             <label htmlFor='sterniPrice'>Sterni Price:</label>
             <select
               name='sterniPrice'
@@ -231,11 +284,29 @@ const AddForm = () => {
             </select>
           </div>
         </div>
-        <button type='submit' disabled={!isFormValid()}>
+        <button id="buttonAddSpati" type='submit'  onClick={(event) => handleSubmit(event)}>
           Submit
         </button>
+        <span className="loading">{sendingForm}</span> 
+       <span className="errorValidation">{errorFormValidation}</span> 
       </form>
-      <Outlet />
+      </div>
+      ) }
+
+      {!isFormSent ? false : (<Outlet />)}
+      
+      
+    </div>
+      <footer>
+      <p>
+        {" "}
+        <a href="">About Us</a>{" "}
+      </p>{" "}
+      <p>| </p>
+      <p>
+        <a href="">Contact</a>{" "}
+      </p>
+    </footer>
     </div>
   );
 };

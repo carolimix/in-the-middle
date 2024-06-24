@@ -2,9 +2,8 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  color: black;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #eaeaeaff !important;
 
   font-synthesis: none;
@@ -32,16 +31,20 @@ h1 {
   line-height: 1.1;
 }
 
-button {
+button, #buttonAddSpati {
   border-radius: 8px;
   border: 1px solid transparent;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+#buttonAddSpati:hover {
+  background: rgb(3, 34, 75, 0.8);
+}
+
 button:hover {
   border-color: #646cff;
 }
@@ -99,7 +102,6 @@ button:focus-visible {
 
 footer {
   background-color:  #ccc;
-  
   display: flex;
   flex-wrap: nowrap;
   display: flex;
@@ -119,4 +121,122 @@ footer p {
 
 footer a {
   color: grey;
+}
+
+#addForm {
+  margin: 0 auto;
+  width: 60%;
+}
+
+#addForm .addSpatiInput {
+  width: 100%;
+    border: 0px;
+    color: rgba(0, 0, 0, 0.75);
+    font: inherit;
+    height: 36px;
+    margin: 0px;
+    overflow: hidden;
+    padding: 0px 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-block: 1px;
+    padding-inline: 2px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.05),
+      0 0 6px 1px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.addFormSession {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#buttonAddSpati {
+  width: 100px;
+    background-color: #03224B;
+    color: white;
+    padding: 8px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#addForm h1, #addForm h2, #addForm h3, .blue {
+  color: #03224B;
+  margin: 0;
+}
+
+.red {
+  color: #FF0200;
+  margin: 0;
+}
+
+#addForm h1 {
+  margin-top: 30px;
+}
+
+#addForm h2,#addForm h3 {
+  margin-top: 10px;
+  font-weight: normal;
+  font-size: 20px;
+}
+
+#addForm {
+  padding-top: 20px;
+}
+
+.addFormSession select {
+  margin-left: 10px;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.05),
+      0 0 6px 1px rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    border: 0px;
+    color: rgba(0, 0, 0, 0.75);
+    font: inherit;
+    height: 30px;
+    padding: 0px 40px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+
+.errorValidation {
+  color: red;
+  margin-left: 25px;
+  font-style: italic;
+}
+
+.loading {
+  margin-left: 25px;
+  font-style: italic;
+}
+
+.red {
+  color: red;
+}
+
+#backToTheSpati {
+  cursor: pointer;
+  margin-top: 70px;
+}
+
+#backToTheSpati a:hover, #searchSpati a:hover {
+  opacity: 0.8;
+}
+
+#formSuccessSent {
+  margin-top: 100px;
+  text-align: center;
+ height:80vh;
+}
+
+#searchSpati {
+  margin-top:30px;
+}
+
+#searchSpati {
+  margin-top:30px;
+  cursor: pointer;
 }
