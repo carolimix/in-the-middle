@@ -9,7 +9,7 @@ export const geojson = {
       },
       properties: {
         title: "Troja Spätkauf",
-        description: "Späti",
+        description: "Troja Spätkauf",
         toilette: true,
         bench: true,
         card: true,
@@ -110,7 +110,7 @@ export const geojson = {
       },
       properties: {
         title: "Späti Berlin",
-        description: "Späti",
+        description: "Späti Redi",
         toilette: true,
         bench: true,
         card: true,
@@ -235,7 +235,7 @@ export const geojson = {
       },
       properties: {
         title: "Späti - Neukölln",
-        description: "Späti",
+        description: "Späti Girls",
         toilette: true,
         bench: false,
         card: true,
@@ -720,15 +720,15 @@ export const geojson = {
       type: "Feature",
       geometry: {
         type: "Point",
-        coordinates: [13.398602, 52.525478], // Gesundbrunnen
+        coordinates: [13.398602, 58.525478], // Gesundbrunnen
       },
       properties: {
         title: "Späti",
-        description: "Späti at Gesundbrunnen",
+        description: "Späti Drinks100",
         toilette: true,
         bench: true,
         card: true,
-        address: "Simon-Dach-Straße 21",
+        address: "Viladesse 31",
         opening_hours: {
           monday: ["10:00 - 22:00"],
           tuesday: ["10:00 - 22:00"],
@@ -999,7 +999,7 @@ export const geojson = {
       },
       properties: {
         title: "Späti",
-        description: "Späti at Schöneberg 2",
+        description: "Späti Good Night",
         toilette: false,
         bench: true,
         card: true,
@@ -1024,7 +1024,7 @@ export const geojson = {
       },
       properties: {
         title: "Späti",
-        description: "Späti at Schöneberg 3",
+        description: "Späti at Nice Drinks",
         toilette: true,
         bench: false,
         card: true,
