@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import LogoPNG from '../assets/logo.png'
 
 
 
@@ -11,8 +11,8 @@ function Logo() {
     console.log("etrei");
     navigate("/");
   };
-    return (
-        <img onClick={() => goToHome()} src="src/assets/logo.png" alt="" width="200px" height="100px"></img>
+  return (
+    <img onClick={() => goToHome()} src={LogoPNG} alt="" width="200px" height="100px"></img>
       );
     }
     
