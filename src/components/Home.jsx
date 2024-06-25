@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 function Home() {
-  const [pointA, setPointA] = useState('');
-  const [pointB, setPointB] = useState('');
-  const [category, setCategory] = useState('bar');
+  const [pointA, setPointA] = useState("");
+  const [pointB, setPointB] = useState("");
+  const [category, setCategory] = useState("bar");
 
   const handlePointAChange = (e) => {
     setPointA(e.target.value);
@@ -27,15 +27,29 @@ function Home() {
       <form onSubmit={handleSubmit}>
         <div id="pointA">
           <label htmlFor="inputA">Point A:</label>
-          <input type="text" id="inputA" value={pointA} onChange={handlePointAChange} />
+          <input
+            type="text"
+            id="inputA"
+            value={pointA}
+            onChange={handlePointAChange}
+          />
         </div>
         <div id="pointB">
           <label htmlFor="inputB">Point B:</label>
-          <input type="text" id="inputB" value={pointB} onChange={handlePointBChange} />
+          <input
+            type="text"
+            id="inputB"
+            value={pointB}
+            onChange={handlePointBChange}
+          />
         </div>
         <div id="categoryDropdown">
           <label htmlFor="categories">Select a category:</label>
-          <select id="categories" value={category} onChange={handleCategoryChange}>
+          <select
+            id="categories"
+            value={category}
+            onChange={handleCategoryChange}
+          >
             <option value="bar">Bar</option>
             <option value="restaurant">Restaurant</option>
             <option value="museum">Museum</option>
@@ -46,7 +60,6 @@ function Home() {
         </div>
         <button type="submit">Find a middle point</button>
       </form>
- 
     </div>
   );
 }

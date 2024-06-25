@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import Search from "./Search.jsx";
 import createMarker from "../utils/createMarker.js";
 import { useNavigate } from "react-router-dom";
-import { useContext } from 'react';
+import { useContext } from "react";
 
 const tokenMapBox = import.meta.env.VITE_ACCESS_TOKEN;
 mapboxgl.accessToken = tokenMapBox;
@@ -27,14 +27,12 @@ function Mapbox() {
   const [specificSpatiClicked, setSpecificSpatiClicked] = useState("");
   const [clickedSpati, setClickedSpati] = useState("");
 
-
   const handleCheckBox = (benches, toilet, card) => {
     setBenches(benches);
     setToilet(toilet);
     setCard(card);
 
     if (benches == true || toilet == true || card == true) {
-      console.log("entrou no primeiro if");
 
       const filteredSpatis = geojson.features.filter((spati) => {
         const hasBenchesCondition = benches ? spati.properties.bench : true; // If hasBenches is false, always return true
@@ -42,27 +40,21 @@ function Mapbox() {
         const acceptsCardCondition = card ? spati.properties.card : true; // If acceptsCard is false, always return true
 
         // Return true if all conditions are true (establishment meets all selected criteria)
-        return hasBenchesCondition && hasToiletCondition && acceptsCardCondition;
-
-        //    console.log(spati.properties.toilette);
-        //   return (
-          //   (benches ? spati.properties.bench == benches : null) ||
-            //  (toilet ? spati.properties.toilette == toilet : null) ||
-          //   (card ? spati.properties.card == card : null)
-        //   );
+        return (
+          hasBenchesCondition && hasToiletCondition && acceptsCardCondition
+        );
       });
 
-    setSpatis(filteredSpatis);
-    const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
-    setMarkers(markerss);
-  }
+      setSpatis(filteredSpatis);
+      const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
+      setMarkers(markerss);
+    }
 
-  if (benches == false && toilet == false && card == false) {
-    console.log("ENTROU");
+    if (benches == false && toilet == false && card == false) {
       setSpatis(geojson.features);
       const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
-     setMarkers(markerss);
-  }
+      setMarkers(markerss);
+    }
   };
 
   useEffect(() => {
@@ -101,7 +93,6 @@ function Mapbox() {
       center: [lng, lat],
       zoom: adressTyped ? 15 : 12,
     });
-    console.log("use effect renderizando");
   }, [lng, lat, adressTyped]);
 
   // Function to calculate distance between two coordinates using Haversine formula
@@ -117,8 +108,6 @@ function Mapbox() {
         Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     const distance = R * c;
-    console.log("distance");
-    console.log(distance);
     return distance;
   };
 
@@ -127,7 +116,7 @@ function Mapbox() {
   };
 
   function addMarkersOnMap(e) {
-    setClickedSpati(null)
+    setClickedSpati(null);
     setAdressTyped(true);
 
     const currentAddress = new mapboxgl.LngLat(e[0], e[1]);
@@ -175,17 +164,6 @@ function Mapbox() {
     setLng(closest.geometry.coordinates[0]);
     setLat(closest.geometry.coordinates[1]);
 
-    //   console.log(closest.geometry.coordinates);
-
-    // console.log(currentAddress);
-    // console.log(spatis);
-
-    //   console.log("lat")
-    //  console.log(currentAddress.lat)
-    //  setAdressTyped(true);
-    //  setLat(e[1]);
-    //   setLng(e[0]);
-
     //create markers in the map based on the mocked data
     const markers = spatis.filter((n) => {
       let newMarker = new mapboxgl.LngLat(
@@ -196,10 +174,6 @@ function Mapbox() {
       return currentAddress.distanceTo(newMarker) < 3000;
     });
 
-    // setLat(newMarker[0])
-    // setLng(newMarker[1])
-    //     .map((n) => createMarker(n));
-    //  setMarkers(markers);
   }
 
   const navigate = useNavigate();
@@ -210,9 +184,9 @@ function Mapbox() {
 
   function closeMapSideBar(e) {
     setSidebarOpen(false);
-    setThreeClosestSpatis("")
+    setThreeClosestSpatis("");
     setSpecificSpatiClicked("");
-    setClickedSpati(null)
+    setClickedSpati(null);
   }
 
   function approximateSpationMap(a, b, specificSpatiClicked) {
@@ -226,8 +200,6 @@ function Mapbox() {
   function backToNearestSpatis() {
     setClickedSpati("");
   }
-
-
 
   // Helper function to get today's opening hours
   const getTodayOpeningHours = (openingHours) => {
@@ -252,74 +224,84 @@ function Mapbox() {
       />
 
       <div ref={mapContainer} className="map-container">
-
-      {clickedSpati && (
+        {clickedSpati && (
           <div className="sidebar">
-
             <div id="sidebarTop">
-              <div className="closeMapSideBar closeOneSpati" onClick={closeMapSideBar}>
-              X
+              <div
+                className="closeMapSideBar closeOneSpati"
+                onClick={closeMapSideBar}
+              >
+                X
               </div>
 
               {threeClosestSpatis == "" ? null : (
-              <div className="backSpatiSidebar" onClick={backToNearestSpatis}>
-              ◄ back
-              </div>      
-
-            )}
-             </div>  
+                <div className="backSpatiSidebar" onClick={backToNearestSpatis}>
+                  ◄ back
+                </div>
+              )}
+            </div>
             <div className="results">
               <div className="oneSpatiSideBar">
-           
-            {/* Render other information from clickedSpati */}
+                {/* Render other information from clickedSpati */}
 
-            <div className="firstDetailsSpatiList">
+                <div className="firstDetailsSpatiList">
                   <h3>{clickedSpati.properties.description.toUpperCase()}</h3>
                   <p>{clickedSpati.properties.sternburg_price} a Sterni</p>
                   <p>{clickedSpati.properties.address}</p>
                   <p>
-                  Today:{" "}
-                     {getTodayOpeningHours(clickedSpati.properties.opening_hours)}
+                    Today:{" "}
+                    {getTodayOpeningHours(
+                      clickedSpati.properties.opening_hours
+                    )}
                   </p>
-                  </div>
-                  <div className="secondDetailsSpatiList">
+                </div>
+                <div className="secondDetailsSpatiList">
                   <p>
-                    {clickedSpati.properties.bench ? "🪑 Has benches" : "🪑 No benches"}
+                    {clickedSpati.properties.bench
+                      ? "🪑 Has benches"
+                      : "🪑 No benches"}
                   </p>
                   <p>
-                    {clickedSpati.properties.toilette ? "🚽 Has toilet" : "🚽 No toilet"}
+                    {clickedSpati.properties.toilette
+                      ? "🚽 Has toilet"
+                      : "🚽 No toilet"}
                   </p>
-                  <p>{clickedSpati.properties.card ? "💳 Accepts card" : "💳 No card"}</p>
-                  </div>
-                
+                  <p>
+                    {clickedSpati.properties.card
+                      ? "💳 Accepts card"
+                      : "💳 No card"}
+                  </p>
+                </div>
 
-                    <div className="openHours">
-                      <p>Monday: {clickedSpati.properties.opening_hours.monday}</p>
-                      <p>Tuesday: {clickedSpati.properties.opening_hours.tuesday}</p>
-                      <p>
-                        Wednesday: {clickedSpati.properties.opening_hours.wednesday}
-                      </p>
-                      <p>Thursday: {clickedSpati.properties.opening_hours.thursday}</p>
-                      <p>Friday: {clickedSpati.properties.opening_hours.friday}</p>
-                      <p>Saturday: {clickedSpati.properties.opening_hours.saturday}</p>
-                      <p>Sunday: {clickedSpati.properties.opening_hours.sunday}</p>
-                    </div>
-
-                    </div>
-                
-           
-          </div>
+                <div className="openHours">
+                  <p>Monday: {clickedSpati.properties.opening_hours.monday}</p>
+                  <p>
+                    Tuesday: {clickedSpati.properties.opening_hours.tuesday}
+                  </p>
+                  <p>
+                    Wednesday: {clickedSpati.properties.opening_hours.wednesday}
+                  </p>
+                  <p>
+                    Thursday: {clickedSpati.properties.opening_hours.thursday}
+                  </p>
+                  <p>Friday: {clickedSpati.properties.opening_hours.friday}</p>
+                  <p>
+                    Saturday: {clickedSpati.properties.opening_hours.saturday}
+                  </p>
+                  <p>Sunday: {clickedSpati.properties.opening_hours.sunday}</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
-     
 
         {threeClosestSpatis === "" || !isSidebarOpen || clickedSpati ? null : (
           <div className="sidebar">
             <div id="sidebarTop">
               <div className="closeMapSideBar" onClick={closeMapSideBar}>
-              X
+                X
               </div>
-              </div> 
+            </div>
             <div className="results">
               {threeClosestSpatis.map((spati, index) => (
                 <div
@@ -334,26 +316,30 @@ function Mapbox() {
                   }
                 >
                   <div className="firstDetailsSpatiList">
-                  <h3>{spati.properties.description.toUpperCase()}</h3>
-                  <p>{spati.properties.sternburg_price} a Sterni</p>
-                  <p>{spati.properties.address}</p>
-                  <p>
-                  Today:{" "}
-                     {getTodayOpeningHours(spati.properties.opening_hours)}
-                  </p>
+                    <h3>{spati.properties.description.toUpperCase()}</h3>
+                    <p>{spati.properties.sternburg_price} a Sterni</p>
+                    <p>{spati.properties.address}</p>
+                    <p>
+                      Today:{" "}
+                      {getTodayOpeningHours(spati.properties.opening_hours)}
+                    </p>
                   </div>
                   <div className="secondDetailsSpatiList">
-                  <p>
-                    {spati.properties.bench ? "🪑 Has benches" : "🪑 No benches"}
-                  </p>
-                  <p>
-                    {spati.properties.toilette ? "🚽 Has toilet" : "🚽 No toilet"}
-                  </p>
-                  <p>{spati.properties.card ? "💳 Accepts card" : "💳 No card"}</p>
+                    <p>
+                      {spati.properties.bench
+                        ? "🪑 Has benches"
+                        : "🪑 No benches"}
+                    </p>
+                    <p>
+                      {spati.properties.toilette
+                        ? "🚽 Has toilet"
+                        : "🚽 No toilet"}
+                    </p>
+                    <p>
+                      {spati.properties.card ? "💳 Accepts card" : "💳 No card"}
+                    </p>
                   </div>
-                
 
-                 
                   {specificSpatiClicked === index && (
                     <div className="openHours">
                       <p>Monday: {spati.properties.opening_hours.monday}</p>

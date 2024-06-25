@@ -21,23 +21,20 @@ export default function Search({ addMarkersOnMap, handleCheckBox }) {
   return (
     <form className="mainForm">
       <div className="flex-container">
-      
         <div className="item1">
           <Logo />
         </div>
 
         <div className="item2">
           <SearchBox
-          
             className="inputSearch"
             value={value}
             onRetrieve={handleSearch}
             accessToken={tokenMapBox}
           />
-          </div>
+        </div>
 
-          <div className="item3">
-        
+        <div className="item3">
           <Checkbox handleCheckBox={handleInnerCheckBox} />{" "}
         </div>
       </div>
