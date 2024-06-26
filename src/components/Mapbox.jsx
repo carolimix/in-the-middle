@@ -16,7 +16,6 @@ function Mapbox() {
   const [lng, setLng] = useState(13.3885);
   const [lat, setLat] = useState(52.5144);
   const [spatis, setSpatis] = useState(geojson.features);
-  // const [filteredSpatis, setFilteredSpatis] = useState();
   const [markers, setMarkers] = useState([]);
   const [benches, setBenches] = useState();
   const [toilet, setToilet] = useState();
@@ -26,8 +25,12 @@ function Mapbox() {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [specificSpatiClicked, setSpecificSpatiClicked] = useState("");
   const [clickedSpati, setClickedSpati] = useState("");
+  const [currentAddressCoordinates, setCurrentAddressCoordinates] = useState("");
+  const [isTheFilterChecked, setIsTheFilterChecked] = useState(false);
+  const [filteredSpatis, setFilteredSpatis] = useState();
 
   const handleCheckBox = (benches, toilet, card) => {
+ 
     setBenches(benches);
     setToilet(toilet);
     setCard(card);
@@ -45,9 +48,17 @@ function Mapbox() {
         );
       });
 
+      setFilteredSpatis(filteredSpatis)
+
       setSpatis(filteredSpatis);
+    
       const markerss = spatis.map((n) => createMarker(n, setClickedSpati));
       setMarkers(markerss);
+
+      if(isSidebarOpen) {
+      addMarkersOnMap(currentAddressCoordinates, filteredSpatis)
+    }
+     
     }
 
     if (benches == false && toilet == false && card == false) {
@@ -115,18 +126,29 @@ function Mapbox() {
     return deg * (Math.PI / 180);
   };
 
-  function addMarkersOnMap(e) {
+  function addMarkersOnMap(e, spatisCheckbox) {
     setClickedSpati(null);
     setAdressTyped(true);
 
-    const currentAddress = new mapboxgl.LngLat(e[0], e[1]);
+    let currentAddress = "";
+    let spatisToShow = "";
+  
 
-    // Ensure userLocation and establishments are populated
+    if(spatisCheckbox !== null) {
+      spatisToShow = spatisCheckbox;
+      currentAddress = new mapboxgl.LngLat(currentAddressCoordinates[0], currentAddressCoordinates[1]);
+    } else {
+      setCurrentAddressCoordinates(e);
+      filteredSpatis == null ? spatisToShow = geojson.features : spatisToShow = filteredSpatis;
+      currentAddress = new mapboxgl.LngLat(e[0], e[1]);
+    }
+
+    console.log(spatisToShow)
+
+    
 
     // Find the closest establishment
-
-    //get the 3 nearest spatis
-    const closestSpatis = spatis
+    const closestSpatis = spatisToShow
       .map((est) => ({
         ...est,
         distance: calculateDistance(
@@ -143,12 +165,13 @@ function Mapbox() {
     setThreeClosestSpatis(sortedSpatisNear);
     setSidebarOpen(true);
 
-    console.log(sortedSpatisNear);
 
     let closest = null;
     let closestDistance = Number.MAX_VALUE;
 
-    spatis.forEach((est) => {
+  
+
+    spatisToShow.forEach((est) => {
       const distance = calculateDistance(
         currentAddress.lat,
         currentAddress.lng,
@@ -160,6 +183,7 @@ function Mapbox() {
         closest = est;
       }
     });
+
 
     setLng(closest.geometry.coordinates[0]);
     setLat(closest.geometry.coordinates[1]);

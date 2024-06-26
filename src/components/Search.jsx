@@ -11,7 +11,7 @@ export default function Search({ addMarkersOnMap, handleCheckBox }) {
   function handleSearch(e) {
     //get the coordanates of the adreess typed
     setValue((prevState) => e.features[0].properties.full_address);
-    addMarkersOnMap(e.features[0].geometry.coordinates, value);
+    addMarkersOnMap(e.features[0].geometry.coordinates, null);
   }
 
   const handleInnerCheckBox = (benches, toilet, card) => {
